@@ -2,10 +2,11 @@
 
 基于Python语言研发，调用DingTalk（钉钉）Robot OpenApi实现钉钉机器人自动化推动绩效工资明细到钉钉用户。
 
-目前，程序处于v1.0.0版本研发阶段，具体功能如下：
+目前，程序处于***v1.0.0***版本研发阶段，具体功能如下：
 - Robot自动化推送DingTalk消息
-- 日志记录
+- 日志记录（初次运行项目会自动创建）
 - 参数配置
+- 模板配置（DingTalk User ID、消息内容）
 
 v1.1.0预研发功能：
 - fix v1.0.0 bug
@@ -29,16 +30,16 @@ v1.1.0预研发功能：
 
 * ***core***   
   程序的核心运行代码：  
-    1. run 程序运行的逻辑代码
-    1. base_class 单例模式 
-    3. config 配置解析
-    4. ding_api 钉钉Robot openApi的封装
-    5. excel_lib Excel操作类
-    6. logger 程序日志
-    7. status Method Response json封装类
-    8. utils 通用静态方法
+    1. **run** 程序运行的逻辑代码
+    1. **base_class** 单例模式 
+    3. **config** 配置解析
+    4. **ding_api** 钉钉Robot openApi的封装
+    5. **excel_lib** Excel操作类
+    6. **logger** 程序日志
+    7. **status** Method Response json封装类
+    8. **utils** 通用静态方法
 * log   
-  日志存放目录，以config.yaml配置为准，名称采用FILENAME_PREFIX + YY-mm-dd.log命名，具体配置请参考config.yaml中的LOG，不建议更改。
+  日志存放目录，***git clone***之后，初次运行会自动创建log目录，以config.yaml配置为准，名称采用FILENAME_PREFIX + YY-mm-dd.log命名，具体配置请参考config.yaml中的LOG，不建议更改。
 * package   
   dingtalk.zip：DingTalk openApi离线包   
   官方下载地址：https://developers.dingtalk.com/document/resourcedownload/download-server-sdk/title-12y-g4g-zn2?pnamespace=robots   
@@ -63,7 +64,7 @@ v1.1.0预研发功能：
 
 - SERVER：项目基础信息配置（*不建议更改*）  
   * NAME：程序名称
-  * VERSION：版本   
+  * VERSION：版本信息   
   * DEBUG：是否采用Debug模式运行，值有True与False，默认值为True开启Debug模式，处于Debug模式的程序会打印log，建议开启
   * IS_TEST：程序开发调试阶段使用，获取模板数据DingTalk use id是否唯一，如果参数为False模板有重复的ID会报error，否则True则会通过，默认设置为False即可
 
@@ -71,7 +72,7 @@ v1.1.0预研发功能：
 - DINGTALK：DingTalk Robot openApi服务端URL设置（***不可以更改***）  
   防止DingTalk官网服务端变更地址时使用，接口为ali openApi，变更的可能性极小。
   * BASE_URL：DingTalk服务API根地址
-  * TOKEN_URL：获取access token地址
+  * TOKEN_URL：获取access token地址，DingTalk所有的OpenApi操作均需要认证，access token是二次对接的第一步
     
 
 - ROBOT：DingTalk Robot配置信息（**必须更改**）
@@ -125,59 +126,57 @@ v1.1.0预研发功能：
   * value：[]代表工资项，需要配置用户推送哪些工资项，需要提供模板文件对应的列数（从1，2，3开始），如果为空，则发送全部工资项内容
     
 
-## 部署
+## 部署策略
 
 这部分介绍项目的环境搭建、运行，帮助开发者把项目跑起来，具体的测试部分需要用户自行创建测试数据进行测试。
 
 > ### 环境搭建
 
 项目是用Python语言开发，而且需要在有网的PC/服务器上进行环境搭建，除了在安装包的时候可以实现一键式包安装，主要原因在于程序调用了DingTalk Robot OpenApi，需要联网把数据推送给ali服务。  
+第一要素：<font style="color: red; font-size: 1.5rem; font-style: italic;">网络</font>
 
-1. Pyhton安装  
+1. Pyhton环境  
 Python官网下载地址：https://www.python.org/downloads/  
 依据系统进行版本下载，建议下载安装Python3.7或者以上的版本，本程序是基于3.7进行开发。  
 安装没什么特别说明的，安装完之后记得把Python加入到系统Path。
 
 2. 包安装  
-当前版本Python安装完之后，会自动安装***pip***包管理工具，对包进行管理、安装、卸载等操作。  
-但是需要进行***pip***源配置，毕竟默认源下载时候需要***fanqiang***，很慢，更改源自行***baidu***一下，本程序的具体包安装见下一主题包说明  
-***pip***常用命令：
-```
-# 安装
-pip install xxx
+Python安装完之后，会自动安装***pip***包管理工具，对包进行管理、安装、卸载等操作。  
+对于初学者不需要进行***pip***源配置，毕竟默认源下载时候需要***fanqiang***，很慢，后期熟悉Python之后再进行更改源更改，自行***baidu***一下，本程序的具体包安装见下一主题包说明，先讲述包安装：    
+    ```
+    cd dtalk_push_pas
+    pip install -r requirements.txt
+    ```
+    第一句命令：控制台进入到项目root目录打  
+    第二句命令：批量包安装
 
-# 卸载
-pip uninstall xxx
 
-# 列表
-pip list/freeze
-```
+3. git项目     
+    ```
+    git clone git@github.com:GIS90/dtalk_push_pas.git
+    或者
+    git clone https://github.com/GIS90/dtalk_push_pas.git
+    ```
+    如果出现git命令找不到情况，***baidu***自行安装git命令。
 
-2. git项目  
-```
-git clone git@github.com:GIS90/dtalk_send_pas.git
-或者
-git clone https://github.com/GIS90/dtalk_send_pas.git
-```
-
-3. Pycharm CE安装  
+4. Pycharm CE安装  
 Pycharm是编写Python代码的IDE，跟IDEA、WebStorm等都是jetbrains生成的，虽然各种IDE国内都有破解版的，但是对于Pycharm还是比较友好的的，因为有社区版本，虽然功能不如专业版，但是***free***啊，白嫖不香吗，哈哈哈。  
 安装Pycharm部分略，安装完之后需要配置一下IDE使用的Python，选择刚安装的就行，具体安装、配置请自行***baidu***，不明白的也可以留言、发邮件。
 
-4. 配置更改  
+5. 配置更改  
 安装完Python与git clone项目之后，需要对项目root根目录下的config.yaml进行配置，主要配置内容：  
    - ROBOT：配置机器人的APPKEY、APPSECRET，具体怎么创建、查看机器人在**上面**或者**README.md末尾**有相关链接说明
    - MESSAGE_COL：需要配置所属的行员类别与对应的工资项（消息内容），格式：key: [列1, 列2, 列3..., 列n]
    - MANAGE：关于消息题是否显示图片以及钉钉不发送用户控制列表  
 其他配置不建议更改，具体配置相关的说明请自行查阅配置说明章节。
 
-5. 配置模板  
+6. 配置模板  
    - 模板文件建议英文命名，必须包含表头，并且表头在模板第一行（表头可中文）
    - 模板文件内容第一列是DingTalk（钉钉）导出的User ID，具体怎么导出员工User ID同样上面有链接，**README.md末尾**也有
    - 模板文件内容第二列定义的是行员类别，是KHDX_HYLB中的LBDH（类别代号）
    - 其他列内容就是PAS绩效系统导出的其他相关展示信息，行员代号、机构名称、工资项1、工资项2、工资项N、合计，需要展示什么内容在MESSAGE_COL进行配置
 
-6. 运行  
+7. 运行  
 完成上述1-5操作之后，在Pycharm中进行启动，打开root目录下的main.py文件，右键 > Run 'main.py'，
 也可以使用快捷键：ctrl+shift+R。
 
@@ -199,6 +198,22 @@ DingTalk Robot OpenApi SDK离线安装：
 - 打开控制台（Windows：cmd，Macos：item2，Linux：terminal）
 - 执行：***python setup.py install***
 - 安装完之后，***pip list***查看
+
+***pip***常用命令：  
+```
+# 安装（最新版）
+pip install xxx
+# 安装（具体版本）
+pip install xxx==1.0
+# 批量安装
+pip install -r requirements.txt
+
+# 卸载
+pip uninstall xxx
+
+# 列表
+pip list/freeze
+```
 
 > ### 测试
 
