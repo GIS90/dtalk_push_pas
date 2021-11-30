@@ -5,7 +5,8 @@
 
 describe: 
     main entry
-
+    RC 0: 程序正常退出
+       1: 程序异常退出
 base_info:
     __version__ = "v.10"
     __author__ = "PyGo"
@@ -45,6 +46,8 @@ from core.excel_lib import ExcelLib
 def __message_format_col() -> dict:
     """
     返回格式化后的行员类别message列
+    配置文件是按1，2，3，4开始的列
+    代码处理是按0，1，2，3开始，需要进行处理
     """
     res = dict()
     if not MESSAGE_COL:
