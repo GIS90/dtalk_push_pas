@@ -1,14 +1,14 @@
 ## 简介
 
-基于Python语言研发，调用DingTalk（钉钉）Robot OpenApi实现钉钉机器人自动化推动绩效工资明细到钉钉用户。
+基于Python语言研发，调用**DingTalk（钉钉）Robot OpenApi**实现钉钉机器人自动化推动绩效工资明细到钉钉用户。
 
-目前，程序处于***v1.0.0***版本研发阶段，具体功能如下：
+目前，程序处于***v1.0.1***版本研发阶段，具体功能如下：
 - Robot自动化推送DingTalk消息
 - 日志记录（初次运行项目会自动创建）
 - 参数配置
 - 模板配置（DingTalk User ID、消息内容）
 
-v1.1.0预研发功能：
+v1.1.X预研发功能：
 - fix v1.0.0 bug
 - 优化参数配置，预加入DingTalk消息体配置
 - 打包制作.exe文件或者一键式部署（具体部署方式以发布版本功能为准）
@@ -226,6 +226,7 @@ pip list/freeze
 
 > ### 学习参考
 
+* Python下载：https://www.python.org/downloads/
 * MarkDown官网语法：http://markdown.p2hp.com/basic-syntax/
 * DingTalk机器人SDK包：https://developers.dingtalk.com/document/resourcedownload/download-server-sdk/title-12y-g4g-zn2?pnamespace=robots
 * Pycharm CE下载地址：https://www.jetbrains.com/pycharm/download/#section=windows

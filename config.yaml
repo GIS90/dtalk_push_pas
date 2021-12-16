@@ -1,6 +1,6 @@
 SERVER:
   NAME: DTALK_SEND_PAS
-  VERSION: 1.0.0
+  VERSION: 1.0.1
   DEBUG: True
   IS_TEST: True
 
