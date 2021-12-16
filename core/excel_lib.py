@@ -84,6 +84,8 @@ class ExcelLib(BaseClass):
         response_title = False if kwargs.get('response_title') is False else True
         excel_object = xlrd.open_workbook(filename=read_file)
         excel_sheet_names = excel_object.sheet_names()
+        if not sheet:
+            sheet = 0
         if sheet > len(excel_sheet_names) or sheet < 0:
             return Status(
                 203,

@@ -44,7 +44,8 @@ v1.1.0预研发功能：
   dingtalk.zip：DingTalk openApi离线包   
   官方下载地址：https://developers.dingtalk.com/document/resourcedownload/download-server-sdk/title-12y-g4g-zn2?pnamespace=robots   
   建议使用官网的***新版服务端SDK***，除了Python SDK还有Java、C#、GO、PHP等，当前主流的开发语言SDK包都提供了。
-  
+* qtdesc   
+  存放其他自定义项目相关描述文件。
 * ***template***   
   存放DingTalk模板配置文件，目前程序**只支持.xls格式的模板**，文件中包含推送消息的用户以及内容，具体template配置相关请查下下个章节配置说明，模板格式如下：
   
@@ -116,6 +117,7 @@ v1.1.0预研发功能：
 
 
 - MANAGE：DingTalk消息控制配置（*不建议更改*）  
+  * TITLE：设置消息体标题，可选项设置，默认为***YYYY-MM月薪资明细***，其中YYYY-MM为当前时间的年-月
   * IS_ADD_IMAGE：推送的消息体是否添加图片显示，默认为空不显示，有需要显示图片的添加图片公网URL地址
   * CONTROL：控制不推送DingTalk消息的人员ID，此ID为DingTalk后台导出的User ID，格式为列表，用英文单引号/双引号括起来，多个用英文逗号分割
 
@@ -139,8 +141,16 @@ v1.1.0预研发功能：
 Python官网下载地址：https://www.python.org/downloads/  
 依据系统进行版本下载，建议下载安装Python3.7或者以上的版本，本程序是基于3.7进行开发。  
 安装没什么特别说明的，安装完之后记得把Python加入到系统Path。
+   
+2. git项目     
+    ```
+    git clone git@github.com:GIS90/dtalk_push_pas.git
+    或者
+    git clone https://github.com/GIS90/dtalk_push_pas.git
+    ```
+    如果出现git命令找不到情况，***baidu***自行安装git命令。
 
-2. 包安装  
+3. 包安装  
 Python安装完之后，会自动安装***pip***包管理工具，对包进行管理、安装、卸载等操作。  
 对于初学者不需要进行***pip***源配置，毕竟默认源下载时候需要***fanqiang***，很慢，后期熟悉Python之后再进行更改源更改，自行***baidu***一下，本程序的具体包安装见下一主题包说明，先讲述包安装：    
     ```
@@ -149,16 +159,7 @@ Python安装完之后，会自动安装***pip***包管理工具，对包进行�
     ```
     第一句命令：控制台进入到项目root目录打  
     第二句命令：批量包安装
-
-
-3. git项目     
-    ```
-    git clone git@github.com:GIS90/dtalk_push_pas.git
-    或者
-    git clone https://github.com/GIS90/dtalk_push_pas.git
-    ```
-    如果出现git命令找不到情况，***baidu***自行安装git命令。
-
+   
 4. Pycharm CE安装  
 Pycharm是编写Python代码的IDE，跟IDEA、WebStorm等都是jetbrains生成的，虽然各种IDE国内都有破解版的，但是对于Pycharm还是比较友好的的，因为有社区版本，虽然功能不如专业版，但是***free***啊，白嫖不香吗，哈哈哈。  
 安装Pycharm部分略，安装完之后需要配置一下IDE使用的Python，选择刚安装的就行，具体安装、配置请自行***baidu***，不明白的也可以留言、发邮件。
@@ -168,7 +169,8 @@ Pycharm是编写Python代码的IDE，跟IDEA、WebStorm等都是jetbrains生成�
    - ROBOT：配置机器人的APPKEY、APPSECRET，具体怎么创建、查看机器人在**上面**或者**README.md末尾**有相关链接说明
    - MESSAGE_COL：需要配置所属的行员类别与对应的工资项（消息内容），格式：key: [列1, 列2, 列3..., 列n]
    - MANAGE：关于消息题是否显示图片以及钉钉不发送用户控制列表  
-其他配置不建议更改，具体配置相关的说明请自行查阅配置说明章节。
+其他配置不建议更改，具体配置相关的说明请自行查阅配置说明章节，   
+消息TITLE标题根据发送的绩效明细定制，默认的适合通用情况
 
 6. 配置模板  
    - 模板文件建议英文命名，必须包含表头，并且表头在模板第一行（表头可中文）

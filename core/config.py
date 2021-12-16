@@ -98,6 +98,8 @@ import sys
 import yaml
 import inspect
 import logging
+from datetime import datetime
+
 
 # logging.basicConfig()
 logger = logging.getLogger(__name__)
@@ -121,6 +123,24 @@ def _get_config():
 # default log dir
 def __get_log_dir():
     return os.path.join(_get_root_folder(), 'log')
+
+
+def d2s(d, fmt="%Y-%m-%d %H:%M:%S"):
+    """
+    # 日期转字符串
+    :param d: datetime type time
+    :param fmt: transfer to formatter
+    :return: string type time
+    """
+    return d.strftime(fmt)
+
+
+def get_now(format="%Y-%m-%d %H:%M:%S"):
+    """
+    # 获取当前时间str
+    :return: to return the now of string type
+    """
+    return d2s(datetime.now(), format)
 
 
 """
@@ -154,6 +174,7 @@ TEMPLATE_COL_INDEX_DINGTALK_ID = 1
 TEMPLATE_COL_INDEX_HYLB = 2
 
 # MANAGE:
+MANAGE_TITLE = '%s月薪资明细' % get_now(format="%Y-%m")
 MANAGE_CONTROL = []
 MANAGE_IS_ADD_IMAGE = ''
 
@@ -210,6 +231,7 @@ with open(_config_file, 'r', encoding='utf-8') as f:
     TEMPLATE_COL_INDEX_HYLB = _config_info['TEMPLATE']['COL_INDEX_HYLB'] or TEMPLATE_COL_INDEX_HYLB
 
     # MANAGE
+    MANAGE_TITLE = _config_info['MANAGE']['TITLE'] or MANAGE_TITLE
     MANAGE_CONTROL = _config_info['MANAGE']['CONTROL'] or MANAGE_CONTROL
     MANAGE_IS_ADD_IMAGE = _config_info['MANAGE']['IS_ADD_IMAGE'] or MANAGE_IS_ADD_IMAGE
 

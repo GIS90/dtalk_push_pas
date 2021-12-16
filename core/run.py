@@ -38,7 +38,7 @@ from core.ding_api import DingApi
 from core.utils import timeer, get_template_folder, get_os_type, get_now
 from core.config import TEMPLATE_FILE, TEMPLATE_IS_TITLE, TEMPLATE_SHEET_INDEX, \
     TEMPLATE_COL_INDEX_DINGTALK_ID, TEMPLATE_COL_INDEX_HYLB, MESSAGE_COL, IS_TEST,\
-    MANAGE_IS_ADD_IMAGE, MANAGE_CONTROL
+    MANAGE_IS_ADD_IMAGE, MANAGE_CONTROL, MANAGE_TITLE
 from core.logger import logger as LOG
 from core.excel_lib import ExcelLib
 
@@ -72,7 +72,7 @@ def get_excel_data(excel_file: str, sheet_index: int = 0) -> json:
     if get_os_type() == 'windows':  # 判断系统类型，如果为win把template模板路径进行\替换/
         excel_file = excel_file.replace('\\', '/')
     excel_lib = ExcelLib()
-    json_res = excel_lib.read(read_file=excel_file, sheet_index=sheet_index,
+    json_res = excel_lib.read(read_file=excel_file, sheet=sheet_index,
                               request_title=is_title, response_title=is_title)
     if json_res.get('status_id') != 100:
         raise Exception("Read template file data occur error: %s" % json_res.get('msg'))
@@ -118,12 +118,16 @@ def __format_message_json(content: dict) -> dict:
     title        String        是               测试标题        首屏会话透出的展示内容。
     text         String        是               测试内容        markdown格式的消息，建议500字符以内。
     """
-    title = '%s月工资绩效明细' % get_now(format="%Y-%m")
+    title = MANAGE_TITLE if MANAGE_TITLE else '%s月薪资明细' % get_now(format="%Y-%m")
     text = '### %s' % title
     if MANAGE_IS_ADD_IMAGE:
         text += '  \n  - ![](%s)' % MANAGE_IS_ADD_IMAGE
     for _k, _v in content.items():
         if not _k and not _v: continue
+        if not _v:
+            _v = 0
+        if isinstance(_v, float):
+            _v = round(_v, 2)
         text += '  \n  - %s: %s' % (_k, _v)
     ding_msg = {
         "title": '%s    详情...' % title,
@@ -174,8 +178,8 @@ def start() -> None:
     real main entry
     """
     RC = 1
+    run()
     try:
-        run()
         RC = 0
     except Exception as e:
         LOG.error(e)

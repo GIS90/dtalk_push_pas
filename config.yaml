@@ -4,7 +4,7 @@ SERVER:
   DEBUG: True
   IS_TEST: True
 
-# dingTalk openApi config
+# dingTalk openApi url config
 DINGTALK:
   BASE_URL: https://oapi.dingtalk.com/
   TOKEN_URL: gettoken
@@ -31,12 +31,22 @@ TEMPLATE:
   COL_INDEX_HYLB: 2
 
 # DingTalk no send message user list configuration, demo：['032511245938821831']
+# default value is null, image reference url: http://pygo2.top/images/tw.png
 MANAGE:
-  IS_ADD_IMAGE: http://pygo2.top/images/tw.png
+  TITLE: 2021-11月绩效薪资明细
+  IS_ADD_IMAGE:
   CONTROL: ['032511245938821831']
 
 # DingTalk message content configuration,
 # accord to the customized content information to push message by the HYLB(Case sensitive)
 MESSAGE_COL:
-  E01: [3, 4, 5, 6, 7, 8, 9, 28, 31, 26]
-  E02: [3, 5, 6, 7, 8, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+  E01: [3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 29]
+  E02: [3, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 29]
+  E03: [3, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+  W01: [7, 11, 12, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34]
+  W02: [7, 11, 12, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
+  B01: [7, 13, 14, 15, 16, 17, 21, 26, 28, 29, 30, 31, 32, 33, 34]
+  T01: [7, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34]
+  L01: [7, 11, 29, 30, 31, 32, 33, 34]
+  Q01: [4, 6, 7, 8, 9, 12, 17, 20, 23, 25, 27]
+  TEST: [3, 4, 5, 6, 7, 8, 9, 28, 31, 26]
