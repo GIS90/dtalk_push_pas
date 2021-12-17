@@ -124,6 +124,7 @@ def __format_message_json(content: dict) -> dict:
         text += '  \n  - ![](%s)' % MANAGE_IS_ADD_IMAGE
     for _k, _v in content.items():
         if not _k and not _v: continue
+        # TODO 只有数值型才为空才设置0
         if not _v:
             _v = 0
         if isinstance(_v, float):
