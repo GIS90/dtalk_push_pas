@@ -10,6 +10,7 @@
 
 v1.1.X预研发功能：
 - fix v1.0.0 bug
+- 分成开发者配置文件以及客户配置文件，便于后续封装exe文件
 - 优化参数配置，预加入DingTalk消息体配置
 - 打包制作.exe文件或者一键式部署（具体部署方式以发布版本功能为准）
 
@@ -69,6 +70,10 @@ v1.1.X预研发功能：
   * DEBUG：是否采用Debug模式运行，值有True与False，默认值为True开启Debug模式，处于Debug模式的程序会打印log，建议开启
   * IS_TEST：程序开发调试阶段使用，获取模板数据DingTalk use id是否唯一，如果参数为False模板有重复的ID会报error，否则True则会通过，默认设置为False即可
 
+
+- DEV：开发者选项配置（*不建议更改*）  
+  * DK_INTERVAL：用户调用DingTalk发消息用户之间是否有间隔时间，默认为1.2，如果参数值>0，则会产生一个0.1~参数值之间的随机间隔，如果设置为0则无间隔
+    
 
 - DINGTALK：DingTalk Robot openApi服务端URL设置（***不可以更改***）  
   防止DingTalk官网服务端变更地址时使用，接口为ali openApi，变更的可能性极小。

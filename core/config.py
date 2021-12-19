@@ -15,6 +15,10 @@ describe:
           * IS_TEST：程序开发调试阶段使用，获取模板数据DingTalk use id是否唯一，如果参数为False模板有重复的ID会报error，否则True则会通过，默认设置为False即可
 
 
+        - DEV：开发者选项配置（*不建议更改*）
+          * DK_INTERVAL：用户调用DingTalk发消息用户之间是否有间隔时间，默认为1.2，如果参数值>0，则会产生一个0.1~参数值之间的随机间隔，如果设置为0则无间隔
+
+
         - DINGTALK：DingTalk Robot openApi服务端URL设置（***不可以更改***）
           防止DingTalk官网服务端变更地址时使用，接口为ali openApi，变更的可能性极小。
           * BASE_URL：DingTalk服务API根地址
@@ -152,6 +156,9 @@ VERSION = '1.0.0'
 DEBUG = False
 IS_TEST = False
 
+# DEV
+DK_INTERVAL = 0
+
 # DINGTALK
 DTALK_BASE_URL = 'https://oapi.dingtalk.com/'
 DTALK_TOKEN_URL = 'gettoken'
@@ -202,6 +209,9 @@ with open(_config_file, 'r', encoding='utf-8') as f:
     VERSION = _config_info['SERVER']['VERSION'] or VERSION
     DEBUG = _config_info['SERVER']['DEBUG'] or DEBUG
     IS_TEST = _config_info['SERVER']['IS_TEST'] or IS_TEST
+
+    # DEV
+    DK_INTERVAL = _config_info['DEV']['DK_INTERVAL'] or DK_INTERVAL
 
     # DINGTALK
     DTALK_BASE_URL = _config_info['DINGTALK']['BASE_URL'] or DTALK_BASE_URL

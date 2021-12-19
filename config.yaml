@@ -4,6 +4,10 @@ SERVER:
   DEBUG: True
   IS_TEST: True
 
+# developer parameters
+DEV:
+  DK_INTERVAL: 1.2
+
 # dingTalk openApi url config
 DINGTALK:
   BASE_URL: https://oapi.dingtalk.com/

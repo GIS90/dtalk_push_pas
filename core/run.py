@@ -38,7 +38,7 @@ from core.ding_api import DingApi
 from core.utils import timeer, get_template_folder, get_os_type, get_now
 from core.config import TEMPLATE_FILE, TEMPLATE_IS_TITLE, TEMPLATE_SHEET_INDEX, \
     TEMPLATE_COL_INDEX_DINGTALK_ID, TEMPLATE_COL_INDEX_HYLB, MESSAGE_COL, IS_TEST,\
-    MANAGE_IS_ADD_IMAGE, MANAGE_CONTROL, MANAGE_TITLE
+    MANAGE_IS_ADD_IMAGE, MANAGE_CONTROL, MANAGE_TITLE, DK_INTERVAL
 from core.logger import logger as LOG
 from core.excel_lib import ExcelLib
 
@@ -167,7 +167,8 @@ def run():
         res = dtalk_lib.robot2send(__format_message_json(v), k)
         success_list.append(k) if res.get('status_id') == 100 else failure_list.append(k)
         LOG.info('%s: %s' % (k, res.get('msg')))
-        time.sleep(random.uniform(0.3, 1.2))
+        if DK_INTERVAL > 0:
+            time.sleep(random.uniform(0.1, DK_INTERVAL))
     else:
         LOG.info('Success list[%s]: %s' % (len(success_list), ', '.join(success_list)))
         LOG.info('Failure list[%s]: %s' % (len(failure_list), ', '.join(failure_list)))
