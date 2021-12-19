@@ -4,9 +4,9 @@
 
 目前，程序处于***v1.0.1***版本研发阶段，具体功能如下：
 - Robot自动化推送DingTalk消息
-- 日志记录（初次运行项目会自动创建）
+- 日志记录（初次运行项目会自动创建log目录以及.log文件）
 - 参数配置
-- 模板配置（DingTalk User ID、消息内容）
+- 模板配置（DingTalk User ID、消息体）
 
 v1.1.X预研发功能：
 - fix v1.0.0 bug
@@ -59,7 +59,7 @@ v1.1.X预研发功能：
   程序入口
 * config.yaml  
   配置文件
-* requirements.txt
+* requirements.txt  
   程序包版本
   
 > ### 配置说明
@@ -162,7 +162,7 @@ Python安装完之后，会自动安装***pip***包管理工具，对包进行�
     cd dtalk_push_pas
     pip install -r requirements.txt
     ```
-    第一句命令：控制台进入到项目root目录打  
+    第一句命令：控制台进入到项目root目录   
     第二句命令：批量包安装
    
 4. Pycharm CE安装  
@@ -178,9 +178,9 @@ Pycharm是编写Python代码的IDE，跟IDEA、WebStorm等都是jetbrains生成�
 消息TITLE标题根据发送的绩效明细定制，默认的适合通用情况
 
 6. 配置模板  
-   - 模板文件建议英文命名，必须包含表头，并且表头在模板第一行（表头可中文）
+   - 模板文件建议英文命名，必须包含表头，并且表头在模板第一行（表头建议用中文）
    - 模板文件内容第一列是DingTalk（钉钉）导出的User ID，具体怎么导出员工User ID同样上面有链接，**README.md末尾**也有
-   - 模板文件内容第二列定义的是行员类别，是KHDX_HYLB中的LBDH（类别代号）
+   - 模板文件内容第二列定义的是自定义的行员消息类别，是配置文件中配置的MESSAGE_COL，用法请参考配置文件
    - 其他列内容就是PAS绩效系统导出的其他相关展示信息，行员代号、机构名称、工资项1、工资项2、工资项N、合计，需要展示什么内容在MESSAGE_COL进行配置
 
 7. 运行  
@@ -248,7 +248,7 @@ pip list/freeze
 
 安装插件需要连接VPN，如果没有VPN，推荐大家使用  
 fotiaoqiang：https://www.jiayouyashanghai.com/cn/?a=dnxe2  
-安装完上述插件之后在卸载
+安装完上述插件之后再进行卸载
 
 > ### 联系方式
 
