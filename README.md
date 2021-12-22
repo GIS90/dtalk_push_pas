@@ -258,5 +258,5 @@ fotiaoqiang：https://www.jiayouyashanghai.com/cn/?a=dnxe2
 * ***WeChat:*** PyGo90
 
 
-**Enjoy the good everyday！！!**  
+**Enjoy the good life everyday！！!**  
 **Life is short, I use python.**

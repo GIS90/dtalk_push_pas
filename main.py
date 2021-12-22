@@ -51,7 +51,7 @@ python version:
     python3
 
 
-Enjoy the good everyday！！!
+Enjoy the good life everyday！！!
 Life is short, I use python.
 
 ------------------------------------------------
