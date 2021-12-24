@@ -232,9 +232,12 @@ pip list/freeze
 > ### 学习参考
 
 * Python下载：https://www.python.org/downloads/
-* MarkDown官网语法：http://markdown.p2hp.com/basic-syntax/
-* DingTalk机器人SDK包：https://developers.dingtalk.com/document/resourcedownload/download-server-sdk/title-12y-g4g-zn2?pnamespace=robots
 * Pycharm CE下载地址：https://www.jetbrains.com/pycharm/download/#section=windows
+* MarkDown官网语法：http://markdown.p2hp.com/basic-syntax/
+* DingTalk开放平台：https://open.dingtalk.com/  
+* 官网发消息格式：https://open.dingtalk.com/document/robots/message-types-and-data-format
+* 官网发消息API：https://open.dingtalk.com/document/robots/chatbots-send-one-on-one-chat-messages-in-batches
+* DingTalk机器人SDK包：https://developers.dingtalk.com/document/resourcedownload/download-server-sdk/title-12y-g4g-zn2?pnamespace=robots
 * DingTalk Robot创建与权限开通：http://pygo2.top/articles/32206/
 * DingTalk User ID获取参考：http://pygo2.top/articles/45420/
 
