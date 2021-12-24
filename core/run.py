@@ -50,13 +50,12 @@ def __message_format_col() -> dict:
     代码处理是按0，1，2，3开始，需要进行处理
     """
     res = dict()
-    if not MESSAGE_COL:
-        return res
+    if not MESSAGE_COL: return res
 
     for key, value in MESSAGE_COL.items():
         if not key: continue
         if key in res.keys():
-            raise ValueError("Please check MESSAGE_COL configuration: %s is repeat." % key)
+            raise ValueError("Please check config.yaml MESSAGE_COL configuration: %s have repeat col." % key)
         res[key] = [x-1 for x in value]
     else:
         return res
@@ -91,7 +90,7 @@ def get_excel_data(excel_file: str, sheet_index: int = 0) -> json:
         for col in _hy_message_col:
             if col < 0: raise IndexError("Format excel data is error: %s %s index out of range" % (hylb, col))
             if not titles[col] and not _d[col]: continue
-            _unit[titles[col]] = _d[col]
+            _unit[titles[col]] = _d[col] or 0
         if dtalk_user_id in ret_data.keys() and not IS_TEST:
             raise ValueError("Format excel data is error: %s is repeat." % dtalk_user_id)
         ret_data[dtalk_user_id] = _unit
@@ -125,8 +124,7 @@ def __format_message_json(content: dict) -> dict:
     for _k, _v in content.items():
         if not _k and not _v: continue
         # TODO 只有数值型才为空才设置0
-        if not _v:
-            _v = 0
+        if not _v: _v = 0
         if isinstance(_v, float):
             _v = round(_v, 2)
         text += '  \n  - %s: %s' % (_k, _v)
@@ -146,15 +144,15 @@ def run():
     excel_file = os.path.join(get_template_folder(), TEMPLATE_FILE)
     if not excel_file or not os.path.exists(excel_file) \
             or not os.path.isfile(excel_file):
-        raise FileExistsError("Template file is not exist, please check.")
+        raise FileExistsError("Template file is not exist, please check file is or not exist.")
     try:
-        # xlrd读取excel数据时，sheet index是从0,1,2,3...开始算
+        # xlrd读取excel数据时，sheet index是从0,1,2,3...开始算，配置中是从1,2,3开始算的，需要-1
         sheet_index = int(TEMPLATE_SHEET_INDEX) - 1
     except:
         sheet_index = 0
     excel_data = get_excel_data(excel_file=excel_file, sheet_index=sheet_index)
     if not excel_data:
-        raise ValueError("Template file not found data, please check.")
+        raise ValueError("Template file not found data, please check template file content.")
 
     # DingTalk push message
     dtalk_lib = DingApi()
@@ -180,9 +178,9 @@ def start() -> None:
     real main entry
     """
     RC = 1
-    run()
     try:
         RC = 0
+        run()
     except Exception as e:
         LOG.error(e)
     sys.exit(RC)
