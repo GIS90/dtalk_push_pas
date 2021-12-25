@@ -1,5 +1,7 @@
 ## 简介
 
+<img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
+
 基于Python语言研发，调用**DingTalk（钉钉）Robot OpenApi**实现钉钉机器人自动化推动绩效工资明细到钉钉用户。
 
 目前，程序处于***v1.0.1***版本研发阶段，具体功能如下：
