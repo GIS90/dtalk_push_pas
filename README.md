@@ -1,9 +1,11 @@
-## 简介
+> ## 简介
 
-<img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
+简称：**_dtalk_push+pas_**  
+
+![](https://img.shields.io/badge/Development%20Language-Python-FF0000)  
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=GIS90&theme=highcontrast&show_icons=true&hide=contribs,prs&count_private=true)
 
 基于Python语言研发，调用**DingTalk（钉钉）Robot OpenApi**实现钉钉机器人自动化推动绩效工资明细到钉钉用户。
-
 目前，程序处于***v1.0.1***版本研发阶段，具体功能如下：
 - Robot自动化推送DingTalk消息
 - 日志记录（初次运行项目会自动创建log目录以及.log文件）
@@ -16,18 +18,18 @@ v1.1.X预研发功能：
 - 优化参数配置，预加入DingTalk消息体配置
 - 打包制作.exe文件或者一键式部署（具体部署方式以发布版本功能为准）
 
-> ### 效果图
+### 效果图
 
 <img src="http://pygo2.top/images/result.jpg" width = "350" height = "450" alt="图片名称" align=center />
 
-> ### 项目架构
+### 项目架构
 
 - 开发语言：***Python3.7***
 - 研发工具：Pycharm CE
 
 程序可运行于Linux、Windows、MacOS等不同系统上，git clone之后进行修改配置，可在此基础上可进行二次开发。
 
-> ### 目录说明
+### 目录说明
 
 程序中的配置信息提取到root目录下config.yaml配置文件，将运行代码封装core核心目录中，对外只暴露程序入口，有兴趣或者想了解源码的依据目录说明进行源代码查看。
 
@@ -64,7 +66,7 @@ v1.1.X预研发功能：
 * requirements.txt  
   程序包版本
   
-> ### 配置说明
+### 配置说明
 
 - SERVER：项目基础信息配置（*不建议更改*）  
   * NAME：程序名称
@@ -135,11 +137,11 @@ v1.1.X预研发功能：
   * value：[]代表工资项，需要配置用户推送哪些工资项，需要提供模板文件对应的列数（从1，2，3开始），如果为空，则发送全部工资项内容
     
 
-## 部署策略
+> ## 部署策略
 
 这部分介绍项目的环境搭建、运行，帮助开发者把项目跑起来，具体的测试部分需要用户自行创建测试数据进行测试。
 
-> ### 环境搭建
+### 环境搭建
 
 项目是用Python语言开发，而且需要在有网的PC/服务器上进行环境搭建，除了在安装包的时候可以实现一键式包安装，主要原因在于程序调用了DingTalk Robot OpenApi，需要联网把数据推送给ali服务。  
 第一要素：<font style="color: red; font-size: 1.5rem; font-style: italic;">网络</font>
@@ -189,7 +191,7 @@ Pycharm是编写Python代码的IDE，跟IDEA、WebStorm等都是jetbrains生成�
 完成上述1-5操作之后，在Pycharm中进行启动，打开root目录下的main.py文件，右键 > Run 'main.py'，
 也可以使用快捷键：ctrl+shift+R。
 
-> ### 包说明
+### 包说明
 
 执行下列***pip***命令进行一键式包安装。
 ```
@@ -224,14 +226,14 @@ pip uninstall xxx
 pip list/freeze
 ```
 
-> ### 测试
+### 测试
 
 建议注册一个企业单位钉钉，随便先创建一个单位即可，添加一些测试人员。  
 ***Now, start your test***
 
-## 其他
+> ## 其他
 
-> ### 学习参考
+### 学习参考
 
 * Python下载：https://www.python.org/downloads/
 * Pycharm CE下载地址：https://www.jetbrains.com/pycharm/download/#section=windows
@@ -243,7 +245,7 @@ pip list/freeze
 * DingTalk Robot创建与权限开通：http://pygo2.top/articles/32206/
 * DingTalk User ID获取参考：http://pygo2.top/articles/45420/
 
-> ### chrome插件推荐
+### chrome插件推荐
 
 * Lifetime Free VPN：VPN（神器）
 * JSON Viewer：JSON数据格式化
@@ -255,7 +257,7 @@ pip list/freeze
 fotiaoqiang：https://www.jiayouyashanghai.com/cn/?a=dnxe2  
 安装完上述插件之后再进行卸载
 
-> ### 联系方式
+> ## 联系方式
 
 * ***Github:*** https://github.com/GIS90
 * ***Email:*** gaoming971366@163.com
