@@ -240,3 +240,13 @@ def get_os_type():
     :return:string
     """
     return 'windows' if platform.system().lower() == 'windows' else 'linux'
+
+
+def die(message="System occur error, exit.") -> None:
+    """
+    system exit
+    :param message:
+    :return:
+    """
+    print(message)
+    sys.exit(1)
