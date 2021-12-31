@@ -152,7 +152,7 @@ default config
 """
 # SERVER
 NAME = 'DTALK_SEND_PAS'
-VERSION = '1.0.0'
+VERSION = 'v1.0.0'
 DEBUG = False
 IS_TEST = False
 
