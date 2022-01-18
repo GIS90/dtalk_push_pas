@@ -179,8 +179,8 @@ def start() -> None:
     """
     RC = 1
     try:
-        RC = 0
         run()
+        RC = 0
     except Exception as e:
         LOG.error(e)
     sys.exit(RC)
