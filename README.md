@@ -5,6 +5,10 @@
 ![](https://img.shields.io/badge/Development%20Language-Python-FF0000)  
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=GIS90&theme=highcontrast&show_icons=true&hide=contribs,prs&count_private=true)
 
+
+***目前，打算把这个功能集成到WEB系统中，脚本化暂停更新，有问题请联系我！***
+
+
 基于Python语言研发，调用**DingTalk（钉钉）Robot OpenApi**实现钉钉机器人自动化推动绩效工资明细到钉钉用户。
 目前，程序处于***v1.0.1***版本研发阶段，具体功能如下：
 - Robot自动化推送DingTalk消息
